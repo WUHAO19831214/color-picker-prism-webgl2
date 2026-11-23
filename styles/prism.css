@@ -1,0 +1,375 @@
+@font-face {
+  font-family: "Geist Variable";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100 900;
+  src: url("../assets/fonts/geist-variable.woff2") format("woff2-variations");
+}
+
+@font-face {
+  font-family: "Geist Mono Variable";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100 900;
+  src: url("../assets/fonts/geist-mono-variable.woff2") format("woff2-variations");
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+  background: #000;
+  color: #ededed;
+  font-family: "Geist Mono Variable", ui-monospace, SFMono-Regular, Menlo, monospace;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.topbar {
+  position: fixed;
+  top: 16px;
+  left: 20px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 11px;
+  color: #555;
+  letter-spacing: 0.01em;
+  pointer-events: none;
+}
+
+.shell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.nav-arrow {
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  background: transparent;
+  border: 0;
+  color: #666;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: color 0.15s ease, opacity 0.15s ease;
+}
+
+.nav-arrow:hover:not(:disabled) {
+  color: #ededed;
+}
+
+.nav-arrow:disabled {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.card-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 11px;
+  color: #666;
+}
+
+.card-frame {
+  width: 542px;
+  height: 542px;
+  border-radius: 12px;
+  border: 1px solid #1c1c1c;
+  overflow: hidden;
+  background: #000;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.7);
+}
+
+.card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 11px;
+  color: #666;
+}
+
+.card-tag {
+  border-bottom: 1px dotted #333;
+  padding-bottom: 2px;
+}
+
+.variant-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.dots {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 999px;
+  border: 0;
+  background: #3a3a3a;
+  cursor: pointer;
+  padding: 0;
+  transition: width 0.2s ease, background-color 0.2s ease;
+}
+
+.dot:hover {
+  background: #888;
+}
+
+.dot.is-active {
+  width: 14px;
+  background: #ededed;
+}
+
+.variant-count {
+  font-variant-numeric: tabular-nums;
+  color: #555;
+}
+
+.bottombar {
+  position: fixed;
+  bottom: 16px;
+  left: 20px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  color: #444;
+  pointer-events: none;
+}
+
+/* ==========================================================================
+   Exact 1:1 Prism Component Styles (.pr)
+   ========================================================================== */
+
+.pr {
+  position: relative;
+  width: 540px;
+  height: 540px;
+  overflow: hidden;
+  isolation: isolate;
+  background: #000;
+  color: #ededed;
+  font-family: "Geist Variable", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-feature-settings: "ss11", "rlig", "calt" 0;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-font-smoothing: antialiased;
+}
+
+.pr * {
+  box-sizing: border-box;
+}
+
+.pr-view {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: block;
+  width: 540px;
+  height: 540px;
+  pointer-events: none;
+}
+
+.pr-stage {
+  position: absolute !important;
+  pointer-events: none;
+}
+
+.pr-prism {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100%;
+  height: 100%;
+  translate: none;
+  outline: none;
+}
+
+.pr-hit {
+  position: absolute;
+  border-radius: 50%;
+  cursor: grab;
+  touch-action: none;
+}
+
+.pr-hit:active {
+  cursor: grabbing;
+}
+
+.pr-read {
+  position: absolute;
+  left: 40px;
+  top: 326px;
+  width: 204px;
+}
+
+.pr-swatch {
+  position: absolute;
+  left: 0;
+  top: 2px;
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  background: var(--color-picker-color);
+  box-shadow: inset 0 0 0 1px #ffffff29;
+}
+
+.pr-hex {
+  display: block;
+  width: 100%;
+  height: 36px;
+  margin: 0 0 20px;
+  padding: 0 0 0 44px;
+  border: 0;
+  border-radius: 0;
+  outline: none;
+  background: none;
+  color: #ededed;
+  caret-color: #ededed;
+  font-family: "Geist Mono Variable", monospace;
+  font-size: 30px;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums slashed-zero;
+  line-height: 36px;
+  letter-spacing: -0.045em;
+  text-transform: uppercase;
+  user-select: text;
+  -webkit-user-select: text;
+}
+
+.pr-hex::selection,
+.pr-hue::selection,
+.pr-num::selection {
+  background: #ededed;
+  color: #000;
+}
+
+.pr-hex:focus-visible {
+  box-shadow: 0 9px 0 -8px #ededed;
+}
+
+.pr-specs {
+  margin: 0;
+}
+
+.pr-specs div {
+  display: flex;
+  align-items: baseline;
+  height: 35px;
+  border-top: 1px solid #ffffff24;
+  line-height: 34px;
+}
+
+.pr-specs dt {
+  flex: 1;
+  color: #a1a1a1;
+  font-size: 13px;
+  letter-spacing: -0.005em;
+}
+
+.pr-specs dd {
+  display: flex;
+  align-items: baseline;
+  margin: 0;
+  font-family: "Geist Mono Variable", monospace;
+  font-size: 13px;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums slashed-zero;
+  letter-spacing: -0.01em;
+}
+
+.pr-specs small {
+  color: #888;
+  font-size: inherit;
+  font-weight: 400;
+  white-space: pre;
+}
+
+.pr-specs [data-dark],
+.pr-specs [data-dark] span {
+  color: #888;
+}
+
+.pr-hue {
+  width: 48px;
+  height: 34px;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  outline: none;
+  background: none;
+  color: inherit;
+  font: inherit;
+  font-variant-numeric: inherit;
+  letter-spacing: inherit;
+  text-align: right;
+  appearance: textfield;
+  -moz-appearance: textfield;
+  user-select: text;
+  -webkit-user-select: text;
+  caret-color: #ededed;
+}
+
+.pr-hue::-webkit-inner-spin-button,
+.pr-hue::-webkit-outer-spin-button,
+.pr-num::-webkit-inner-spin-button,
+.pr-num::-webkit-outer-spin-button {
+  display: none;
+}
+
+.pr-hue:focus-visible,
+.pr-num:focus-visible {
+  box-shadow: 0 -5px 0 -4px #ededed inset;
+}
+
+.pr-num {
+  width: 52px;
+  height: 34px;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  outline: none;
+  background: none;
+  color: inherit;
+  font: inherit;
+  font-variant-numeric: inherit;
+  letter-spacing: inherit;
+  text-align: right;
+  appearance: textfield;
+  -moz-appearance: textfield;
+  user-select: text;
+  -webkit-user-select: text;
+  caret-color: #ededed;
+}
